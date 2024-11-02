@@ -23,4 +23,7 @@
   <li>
     <a href="silabas.php">silabas</a>
   </li>
+  <li>
+    <a href="funciones_string.php">funciones string</a>
+  </li>
 </ul>
