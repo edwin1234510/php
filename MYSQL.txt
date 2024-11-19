@@ -1,0 +1,48 @@
+create user edwin_alfonso@localhost identified by "edwin0701";
+create database edwin_adso;
+grant all privileges on edwin_adso.* to edwin_alfonso@localhost;
+flush privileges;
+
+use edwin_adso;
+
+drop table  generos;
+
+create table generos(
+genero_id int auto_increment,
+genero varchar(100) not null,
+primary key(genero_id));
+
+create table ciudades(
+ciudad_id int auto_increment,
+ciudad_nombre varchar(150) not null,
+primary key(ciudad_id));
+
+create table lenguajes(
+lenguaje_id int auto_increment primary key,
+lenguaje varchar(150));
+
+create table usuarios(
+usuario_id int auto_increment,
+nombre varchar(255) not null,
+apellido varchar(255) not null,
+correo varchar(255) not null,
+fecha_nacimiento DATE not null,
+id_genero INT,
+id_ciudad int,
+primary key(usuario_id),
+FOREIGN KEY (id_genero) REFERENCES generos(genero_id),
+FOREIGN KEY (id_ciudad) REFERENCES ciudades(ciudad_id));
+
+create table lenguajes_usuarios(
+id_aprendiz int,
+id_lenguaje int,
+FOREIGN KEY (id_aprendiz) REFERENCES usuarios(usuario_id),
+FOREIGN KEY (id_lenguaje) REFERENCES lenguajes(lenguaje_id));
+
+insert into ciudades (ciudad_nombre) values('Girón'), ('Piedecuesta'),('Bucaramanga'),('Lebrija'),('Floridablanca');
+insert into generos (genero) values ('Masculino'),('Femenino'),('Otros');
+insert into lenguajes (lenguaje) values ('JAVA'),('.NET'),('SQL'),('JavaScript'),('PHP'),('PYTHON');
+insert into usuarios (nombre,apellido,correo,fecha_nacimiento,id_genero,id_ciudad) values('edwin','villabona','edwin0701@gmail.com','2006-07-01','1','3');
+select * from usuarios;
+select * from lenguajes_usuarios;
+describe usuarios;
