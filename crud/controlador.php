@@ -33,9 +33,6 @@ foreach ($lenguaje as $key => $value){
     $stm -> bindParam(":id_lenguaje",$value);
     $usuario = $stm ->execute();
 }
-echo"<pre>";
-print_r($_REQUEST);
-echo"</pre>";
 ?>
 
 

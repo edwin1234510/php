@@ -22,6 +22,7 @@ $generos = $bandera2->fetchAll();
 $lenguajes = $bandera3->fetchAll();
 $usuarios = $bandera4->fetchAll();
 ?>
+
 <form action="controlador.php" method="post">
     <div>
         <label for="nombre">nombre</label>
@@ -89,31 +90,7 @@ $usuarios = $bandera4->fetchAll();
     <button>enviar</button>
 </form>
 <br>
-<table border="bold 1px">
-    <tr>
-        <td>usuario_id</td>
-        <td>nombre</td>
-        <td>apellido</td>
-        <td>correo</td>
-        <td>fecha_nacimiento</td>
-        <td>id_genero</td>
-        <td>id_ciudad</td>
-    </tr>
-    <?php foreach ($usuarios as $key => $value){
-        ?>
-        <tr>
-            <td><?=$value ['usuario_id']?></td>
-            <td><?=$value ['nombre']?></td>
-            <td><?=$value ['apellido']?></td>
-            <td><?=$value ['correo']?></td>
-            <td><?=$value ['fecha_nacimiento']?></td>
-            <td><?=$value ['id_genero']?></td>
-            <td><?=$value ['id_ciudad']?></td>
-            <td><a href="actualizar.php?iduser=<?=$value['usuario_id']?>" >actualizar</a></td>
-        </tr>
-        <?php
-        } ?>
-</table>
+
 
 
 

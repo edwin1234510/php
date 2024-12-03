@@ -1,35 +1,45 @@
 <?php
+
 require('conexion.php');
-
-$user_id= $_GET['iduser'];
-
 $db = new Conexion();
 $conexion = $db->getConexion();
+
+$user_id = $_GET['iduser'];
+
 $sql1 = "SELECT * FROM ciudades";
 $sql2 = "SELECT * FROM generos";
 $sql3 = "SELECT * FROM lenguajes";
 $sql4 = "SELECT * FROM usuarios WHERE usuario_id = $user_id";
+$sql5 = "SELECT * FROM lenguajes_usuarios WHERE id_aprendiz = $user_id";
 $bandera1 = $conexion->prepare($sql1);
 $bandera2 = $conexion->prepare($sql2);
 $bandera3 = $conexion->prepare($sql3);
 $bandera4 = $conexion->prepare($sql4);
+$bandera5 = $conexion->prepare($sql5);
 $bandera1->execute();
 $bandera2->execute();
 $bandera3->execute();
 $bandera4->execute();
+$bandera5->execute();
 $ciudades = $bandera1->fetchAll();
 $generos = $bandera2->fetchAll();
 $lenguajes = $bandera3->fetchAll();
 $usuarios = $bandera4->fetchAll();
+$lenguajes_usuarios = $bandera5->fetchAll();
+$lenguajesArray = [];
+foreach ($lenguajes_usuarios as $key => $value) {
+    $lenguajesArray[] = $value['id_lenguaje'];
+}
 ?>
 
-<form action="controlador.php" method="post">
+<form action="controlador2.php" method="post">
     <?php foreach ($usuarios as $key => $value){
         ?>
         <div>
             <label for="nombre">nombre</label>
             <input type="text" id="nombre" name="nombre" value="<?= $value ['nombre']?>" required>
         </div>
+        <input type="hidden" name="id" value="<?=$user_id?>">
     <br>
     <div>
         <label for="apellido">apellido</label>
@@ -82,16 +92,16 @@ $usuarios = $bandera4->fetchAll();
     </div>
     <br>
     <div>
-            <label for="lenguaje_id">lenguajes</label>
+        <label for="lenguaje_id">lenguajes</label>
             <?php
             foreach ($lenguajes as $key => $l){
                 ?>
                 <br>
-                <input type="checkbox" id="<?= $l['lenguaje_id']?>" name="lenguajes[]" value="<?= $l['lenguaje_id']?>" 
-                <?php if($value['usuario_id'] == $l['id_aprendiz']){?>
-                    checked <?php
-                } ?> >
-                <?= $value['lenguaje']?>
+                <input type="checkbox" id="<?= $l['lenguaje_id']?>" name="lenguajes[]" value="<?= $l['lenguaje_id']?>"
+                <?php
+                    if (in_array($l['lenguaje_id'] ,$lenguajesArray)){?> checked <?php
+                    } ?> >
+                    <?= $l['lenguaje'];?>
             <?php
             }
             ?>
@@ -100,5 +110,5 @@ $usuarios = $bandera4->fetchAll();
     <br>
     <button>actualizar</button>
     <?php 
-    } ?>
+    }?>
 </form>
