@@ -40,5 +40,4 @@ foreach ($lenguaje as $key => $value){
     $stm2_insert ->execute();
 }
 
-
 ?>

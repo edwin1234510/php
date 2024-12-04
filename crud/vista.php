@@ -35,3 +35,4 @@ $usuarios = $bandera4->fetchAll();
         <?php
         } ?>
 </table>
+<a href="index.php">registrar</a>

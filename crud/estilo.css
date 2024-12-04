@@ -1,0 +1,43 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.formulario{
+    width: 450px;
+    height: 650px;
+    background-color: rgb(241, 241, 241);
+    box-shadow: 0 0 8px black;
+    margin: 100px auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    border-radius: 20px;
+}
+.informacion{
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+}
+.content{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.seleccion{
+    width: 100%;
+    text-align: start;
+}
+.boton{
+    font-size: 15px;
+    width: 60px;
+    height: 30px;
+}
+.link{
+    text-decoration: none;
+    color: #2c2c2c;
+    font-weight: bold;
+}
