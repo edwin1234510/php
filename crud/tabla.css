@@ -1,0 +1,38 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.tabla{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: 150px;
+}
+.casilla{
+    border: 2px solid #ca8229;
+    background-color: #fff5e8;
+    padding: 5px;
+}
+.link{
+    text-decoration: none;
+    color: #710505;
+}
+.casilla--oscuro{
+    background-color: #ffb048;
+}
+.contenedor{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+}
+.boton{
+    text-decoration: none;
+    padding: 6px;
+    border-radius: 8px;
+    background-color: #626262;
+    color: #fff;
+    
+}
